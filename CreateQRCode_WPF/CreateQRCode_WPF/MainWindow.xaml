@@ -1,0 +1,32 @@
+﻿<Window x:Class="CreateQRCode_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CreateQRCode_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--Chia làm 2 cột. Cột 1 chứa Image QR code
+        Cột 2 chia làm 3 dòng, dòng 1 chứa đường dẫn của tấm hình cần tạo QR code
+        Dòng 2 chứa hình cần tạo QR code
+        Dòng 3 chứa button khi click vào sẽ tạo QR code-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="ImgQRCode"></Image>
+        <!--Nếu tạo TextBlock ở cột 1 thì thuộc tính text chỉ chứa System.Drawing.Bitmap-->
+        <!--<TextBlock x:Name="txblQRCodeSource"></TextBlock>-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="txtSource" Text="{Binding Source,ElementName=ImageSource}"></TextBox>
+            <Image x:Name="ImageSource" Grid.Row="1" Source="C:\Users\Windows\Downloads\Hoài Ngọc.jpg"></Image>
+            <Button Content="Create QR Code" Grid.Row="2" Click="Button_Click"></Button>
+        </Grid>
+    </Grid>
+</Window>
